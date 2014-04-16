@@ -1,0 +1,44 @@
+<h1> Index Page </h1>
+
+	<h2> Listing all posts </h2>
+
+	<%= link_to "My Blog", controller: "posts" %> | 
+	<%= link_to "New post", new_post_path %>
+	<table>
+		<tr>
+			<th><div> <a href="#"> Title </a> </div></th>
+			<th><div><a  href="#"> Text </a></div></th>
+			<th>square_result</th>
+			<th> <%= p " #{current_test_user} " %></th>
+			<th></th>
+
+		</tr>
+
+
+
+			<% @posts.each do |post| %>
+		<tr>
+			<td class="link_post"> <a href="#" ><%= post.title %></a></td>
+
+
+			<td> <%= post.text %> </td>
+			<td> <%= link_to "Show", post_path(post) %></td>
+			<td><%= link_to "Edit", edit_post_path(post) %></td>
+			<td><%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+		</tr>	
+
+			<% end %>
+
+			<%= link_to "sign_out", destroy_test_user_session_path, :method => :delete %>
+
+
+			
+
+	</table>
+
+
+
+		
+
