@@ -38,6 +38,10 @@ gem 'cancan'
 
 gem 'pry-rails', :group => :development
 
+gem 'kaminari'
+
+
+
 # Use ActiveModel has_secure_password
  # gem 'bcrypt'
 
