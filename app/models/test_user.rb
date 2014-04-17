@@ -8,5 +8,4 @@ class TestUser < ActiveRecord::Base
    	true
    end
 
-   
 end
