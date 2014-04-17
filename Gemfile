@@ -34,6 +34,9 @@ end
 
 gem 'devise'
 
+gem 'cancan'
+
+gem 'pry-rails', :group => :development
 
 # Use ActiveModel has_secure_password
  # gem 'bcrypt'

@@ -12,6 +12,16 @@
   <div><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
+    <div> 
+    	<%= check_box_tag(:role) %>
+		<%= label_tag(:role, "Admin") %>
+		<%= check_box_tag(:role) %>
+		<%= label_tag(:role, "Moderator") %>
+		<%= check_box_tag(:role) %>
+		<%= label_tag(:role, "Author") %>
+
+    </div>
+
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
