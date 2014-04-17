@@ -9,6 +9,6 @@ class TestUser < ActiveRecord::Base
    end
 
    # def test_method
-   	# github git hub
+   	# github git hub commit changes
    # end
 end
