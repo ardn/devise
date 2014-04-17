@@ -7,4 +7,8 @@ class TestUser < ActiveRecord::Base
    def admin?
    	true
    end
+
+   # def test_method
+   	
+   # end
 end
