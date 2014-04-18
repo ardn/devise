@@ -12,9 +12,9 @@
 
 <h2> Comments </h2>
 
-<%= render @post.comments %>
+<%= render @pages %>
 
-
+<%= paginate @pages %>
 
 <h1> Add Comment(s) </h1>
 <%= render "comments/form" %>
@@ -23,3 +23,4 @@
 
 <%= link_to "Back", posts_path %>
 <%= link_to "Edit", edit_post_path(@post) %>
+

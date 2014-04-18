@@ -2,9 +2,13 @@ class CommentsController < ApplicationController
 
 	# http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy 
 
+	# @users = User.order(:name).page params[:page]  => inside  which action
+
 	def create
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.create(params[:comment].permit(:commenter, :body))
+
+
 
 		redirect_to post_path(@post)
 		
@@ -17,5 +21,10 @@ class CommentsController < ApplicationController
 		redirect_to post_path(@post)
 		
 	end
+	# def pagination
+	# 	@post = Post.find(params[:post_id])
+	# 	@pages = @post.comments.all.page params[:page]
+
+	# end
 
 end

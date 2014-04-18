@@ -7,19 +7,18 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.all
-binding.pry 
+
 	end
+
 	def new
 		@post = Post.new
 		
 	end
+
 	def create
 		
 		@post = Post.new(params[:post].permit(:title, :text))
 
-		# @post = Post.new(post_params)
-		# @post.user = current_test_user
-		
 		if @post.save
 
 			redirect_to @post    
@@ -31,8 +30,7 @@ binding.pry
 
 	def show
 		@post = Post.find(params[:id])
-
-
+		@pages = @post.comments.page params[:page]
 
 	end
 
