@@ -1,46 +1,59 @@
-  <h2> Tabular Blog Demo </h2>
+  
+  <!-- <h2> Tabular Blog Demo </h2>
 
-		<%= link_to "New post", new_post_path %> |
-   	
-   	<%= if test_user_signed_in? 
+		<%= link_to "New post",new_post_path  %> |
+
+-->
+      
+
+<nav>
+	<div><a href="#">Home</a></div>
+	<div><%= link_to "New Post", new_post_path  %></div>
+	<div><a href="">Tab3</a></div>
+	<div><a href="">Tab4</a></div>
+</nav>
+
+
+
+<div>
+	<%= if test_user_signed_in? 
          link_to "Sign Out", destroy_test_user_session_path, :method => :delete 
        else 
          link_to "Sign In", new_test_user_session_path 
        end 
     	%>
-    
-	<table>
-		<tr>
-			<th>General Gem  </th>
-			<th>Description </th>
-			<th> </th>
-			<th> </th>
-			<th></th>
+ </div>	
 
-		</tr>
+	<% @posts.each do |post| %>
 
-			<% @posts.each do |post| %>
-		
-		<tr>
-			<td class="link_post"> <%= post.title %></td>
-			<td> <%= post.text %> </td>
-			<td> <%= link_to "Show", post_path(post) %></td> 
-			<td> <% if can? :update, post %> <%= link_to "Edit", edit_post_path(post) %></td>
+<div>
+	<article>
+  <header>
+    <h1><%= post.title %></h1>
+    <p><time> <%= post.created_at %> </time></p> 
+  </header>
+  
+</article>
+
+
+</div>
+
+
+<div>
+			<div class="link_post"> <%= post.title %></div>
+			<div > <%= post.text %> </div >
+			<div > <%= link_to "Show", post_path(post) %></div > 
+			<div > <% if can? :update, post %> <%= link_to "Edit", edit_post_path(post) %></div >
 
 					<% end %>
 
-			<td>	<% if can? :destroy, post %> <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<div >	<% if can? :destroy, post %> <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></div >
 
 					<% end %>
-		</tr>	
-
-			
-			<% end %>
 
 	
-	</table>
+</div>
 
-
-
+	<% end %>
 		
 

@@ -1,3 +1,22 @@
+<!-- 
+
+<script>
+  $(document).ready(function(){
+    $('#new_post').submit(function(){
+      var name = document.getElementById('post_title').value();
+      console.log(name);
+      if( name == null){
+        $("#post_title").addClass('errorClass');
+        return false;
+      }
+    })
+  })
+</script>
+<style>
+  .errorClass { border:  1px solid red; }
+</style>
+
+--> 
 
 <%= form_for  @post do |f| %>
 
