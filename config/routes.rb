@@ -3,10 +3,11 @@ Blog::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :test_users
+  resources :categories 
   resources :posts do
     resources :comments
-
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

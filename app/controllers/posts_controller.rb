@@ -16,8 +16,9 @@ class PostsController < ApplicationController
 
 	def create
 		
-		@post = Post.new(params[:post].permit(:title, :text))
-
+		@post = Post.new(post_params)
+		@post.test_user = current_test_user
+		@post.category_ids = params[:post][:category_ids]
 		if @post.save
 
 			redirect_to @post    
@@ -29,6 +30,7 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
+		
 		@pages = @post.comments.page params[:page]
 
 	end
@@ -41,7 +43,7 @@ class PostsController < ApplicationController
 	end
 	def update
 		@post = Post.find(params[:id])
-
+		@post.category_ids = params[:post][:category_ids]
 		if @post.update(params[:post].permit(:title, :text))
 
 
@@ -67,7 +69,7 @@ class PostsController < ApplicationController
 	
 	private 
 	def post_params
-		params.require(:post).permit(:title, :text)
+		params.require(:post).permit!
 		
 	end
 end

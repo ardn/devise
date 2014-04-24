@@ -4,6 +4,8 @@ class TestUser < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+   has_many :posts, :class_name => "Post"
+
    def admin?
    	true
    end

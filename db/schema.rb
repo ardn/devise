@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418070346) do
-
+ActiveRecord::Schema.define(version: 20140424104404) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -54,6 +53,16 @@ ActiveRecord::Schema.define(version: 20140418070346) do
     t.datetime "updated_at"
   end
 
+  create_table "categories_posts", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories_posts", ["category_id"], name: "index_categories_posts_on_category_id"
+  add_index "categories_posts", ["post_id"], name: "index_categories_posts_on_post_id"
+
   create_table "comments", force: true do |t|
     t.string   "commenter"
     t.text     "body"
@@ -64,34 +73,28 @@ ActiveRecord::Schema.define(version: 20140418070346) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
 
-  create_table "m_users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "m_users", ["email"], name: "index_m_users_on_email", unique: true
-  add_index "m_users", ["reset_password_token"], name: "index_m_users_on_reset_password_token", unique: true
-
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "test_user_id"
   end
+
+  create_table "posts_categories", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts_categories", ["category_id"], name: "index_posts_categories_on_category_id"
+  add_index "posts_categories", ["post_id"], name: "index_posts_categories_on_post_id"
 
   create_table "test_users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "role",                   default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -102,28 +105,9 @@ ActiveRecord::Schema.define(version: 20140418070346) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "role"
   end
 
   add_index "test_users", ["email"], name: "index_test_users_on_email", unique: true
   add_index "test_users", ["reset_password_token"], name: "index_test_users_on_reset_password_token", unique: true
-
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
