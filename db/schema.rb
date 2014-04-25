@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424104404) do
+ActiveRecord::Schema.define(version: 20140425074503) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -90,6 +90,13 @@ ActiveRecord::Schema.define(version: 20140424104404) do
 
   add_index "posts_categories", ["category_id"], name: "index_posts_categories_on_category_id"
   add_index "posts_categories", ["post_id"], name: "index_posts_categories_on_post_id"
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.text     "tags"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "test_users", force: true do |t|
     t.string   "email",                  default: "", null: false

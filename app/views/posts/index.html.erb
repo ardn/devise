@@ -1,21 +1,3 @@
-<p>this aljdslkfjalsdjfljasldjflasjdlkf l;asjdfljaslkdjf asdf</p>
-<nav>
-	<div><a href="#">Home</a></div>
-	<div><%= link_to "New Post", new_post_path  %></div>
-	<div><a href="">Tab3</a></div>
-	<div><a href="">Tab4</a></div>
-</nav>
-
-
-
-<div>
-	<%= if test_user_signed_in? 
-         link_to "Sign Out", destroy_test_user_session_path, :method => :delete 
-       else 
-         link_to "Sign In", new_test_user_session_path 
-       end 
-    	%>
- </div>	
 
 	<% @posts.each do |post| %>
 
@@ -33,14 +15,14 @@
 
 
 <div>
-			<div class="link_post"> <%= post.title %></div>
+			<div > <%= post.title %></div>
 			<div > <%= post.text %> </div >
-			<div > <%= link_to "Show", post_path(post) %></div > 
-			<div > <% if can? :update, post %> <%= link_to "Edit", edit_post_path(post) %></div >
+			<div id="elink1"> <%= link_to "Show", post_path(post) %></div > 
+			<div id="elink2"> <% if can? :update, post %> <%= link_to "Edit", edit_post_path(post) %></div >
 
 					<% end %>
 
-			<div >	<% if can? :destroy, post %> <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></div >
+			<div id="elink3">	<% if can? :destroy, post %> <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></div >
 
 					<% end %>
 

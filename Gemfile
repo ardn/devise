@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -41,6 +41,18 @@ gem 'pry-rails', :group => :development
 gem 'kaminari'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
+
+gem "less-rails"
+
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+# gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+
+gem 'sunspot_rails'
+
+group :development do
+    gem 'sunspot_solr'
+  end
 
 
 

@@ -7,6 +7,11 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.all
+	
+
+  		@posts_result = Post.search(params[:search])
+	 binding.pry
+
 	end
 
 	def new
